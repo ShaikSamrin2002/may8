@@ -1,0 +1,136 @@
+/// TRANSPORTING DATA FROM ONE PLACE TO ANAOTHER PLACE
+///FOR  EX FROM TAP TO GARDEN THROUGH PIPE
+1.INPUT STREAM :RECEIVE AND READ DATA
+2.OUTPUT STREAM:SEND DATA AND WRITE DATA
+
+system.in --> this represents input stream object ,this object represents the standard input object(ex.keyboard)
+system.out -->this represents output stream object,this represents the standard output device(ex.monitor)
+
+CODE1:
+package javaintro;
+
+public class first {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a=10;
+		System.out.println(a);  //o/p: 10
+		System.err.println(a);  // o/p:10 (in red colour) bcoz error is used
+
+	}
+
+}
+
+System.err.println(); ---> WE CAN USE THIS WHEN ERROR IS EXCEPTED TO GET BETTER VISUALIZATION
+
+BYTE STREAM/TEXT STREAMS
+-> INDIVIDUAL TYPE  --> FILEINPUT STREAM
+						FILEOUTPUT STREAM
+						BUFFERED INPUT STREAM
+						BUFFERED OUTPUT STREAM
+						
+TEXT STREAM --> FILE READER
+     			FILE WRITER
+     			BUFFURED READER
+     			BUFFERED WRITER
+
+FOR IMPORTING STREAM USE PACKAGE import java.io.*
+
+
+CODE2:
+
+package javaintro;
+
+import java.io.*;
+import java.util.*;
+
+public class first {
+	
+	public static void main(String[] args) throws IOException {
+		DataInputStream dis=new DataInputStream(System.in);  // TAKING FROM KEYBOARD
+		FileOutputStream fout=new FileOutputStream("E://myjava.txt"); // CREATING PATH FOR FILE TO BE SAVED
+	
+		
+			System.out.println("Enter the data (0 at the end): ");
+			char ch;
+			while((ch=(char)dis.read())!='@')  // IF INPUT NOT EQUAL TO @ WRITE THE INPUT
+			{
+				fout.write(ch);
+			}
+			fout.close();
+
+		}
+}
+
+O/P: ENTER THE DATA (0 AT THE END): THIS IS MY FILE
+
+///---- THIS WILL CREATE MYJAVA FILE IN 'E' DRIVE AS GIVEN ABOVE
+
+FOR EXAMPLE:
+	1 CHAR-> FILEINPUTSTRAEM  TAKES 1SEC
+	FILEOUTPUTSTREAM -> 1 CAHR TAKES 1 SEC
+	
+	----> TOTALLY TAKES 2 SEC WHICH IS HEAVY TIME
+	FOR 100 CHARACTERS TAKES 200 SECONDS
+	
+	SO WE USE BUFFERED CLASSES WHICH TAKES IN BYTES FORMAT
+  
+CODE3:
+
+package javaintro;
+
+import java.io.*;
+import java.util.*;
+
+public class first {
+	
+	public static void main(String[] args) throws IOException {
+		DataInputStream dis=new DataInputStream(System.in);
+		FileOutputStream fout=new FileOutputStream("E://myjava.txt");
+	
+		
+		BufferedOutputStream bout=new BufferedOutputStream(fout,1024); // speed is fast
+			System.out.println("Enter the data (0 at the end): ");
+			char ch;
+			while((ch=(char)dis.read())!='@')
+			{
+				fout.write(ch);
+			}
+			bout.close();
+		}
+}
+
+o/p: This is Samrin
+
+CODE4:
+
+package javaintro;
+
+import java.io.*;
+import java.util.*;
+
+public class first {
+	
+	public static void main(String[] args) throws IOException {
+			int ch;
+			FileReader fr=null;
+			try {
+				fr=new FileReader("E://myjava.txt");
+				System.out.println("file is checked");
+			} catch(FileNotFoundException fe) {
+				System.err.print("File is not found");
+			}
+			
+			while((ch=fr.read())!=-1)
+			{
+			
+				System.out.print((char)ch);
+			}
+			fr.close();
+		}
+}
+
+o/p: file is checked
+     This is Samrin
+     
+
