@@ -1,0 +1,220 @@
+EXCEPTION HANDLING
+//		--compile time error i.e syntactical error which are fail to run the program
+//		--RUN time error:these errors represent in efficiency of the computer system to execute a particular statement
+//		  inability of microprocessor to execute some statement
+//		--Eception is a runtime eroor only but some expections are detected by compiletime called Checked exception
+//		  runtime are unchecked exceptions which are DETECTED by JVM LIKE logical errors etc
+//		--UNCHECKED are unrecoverable
+//		--CHECKED are we can haldle the exception
+//		--IO EXCEPTION ->CHECKED 
+//		JAVA.LANG --Throwable-> 1.Error --> all errors
+//		             			2.Exception-->1.Runtime exception
+//											  2.Other exception
+//		throwable is class that represents all errors and exceptions which may occur in java
+//	    we can overcome this by using try and catch block
+//		try {     }
+//		catch{    }
+
+
+CODE INTODUCTION:
+package javaintro;
+
+public class Exception {
+
+	public static void main(String[] args) {
+		
+		try {
+			System.out.println("Open files");
+			int n=args.length;
+			System.out.println("n= "+n);
+			int a=45/n;
+			System.out.println("a= "+a);
+		}
+		catch(ArithmeticException ae) {
+			System.out.println(ae);
+			System.out.println("please pass data while running this program");
+		}
+
+	}
+
+}
+CODE1:
+
+package javaintro;
+
+public class Exception {
+
+	public static void main(String[] args) {
+
+		try {
+			System.out.println("Open files");
+			int n=args.length;
+			System.out.println("n= "+n);
+			int a=45/n;
+			System.out.println("a= "+a);
+		}
+		catch(ArithmeticException ae) {
+			System.out.println(ae);
+			System.out.println("please pass data while running this program");
+		}
+	}
+}
+
+o/p :
+Open files
+n= 0
+java.lang.ArithmeticException: / by zero
+please pass data while running this program
+
+CODE2:
+public class Exception {
+
+	public static void main(String[] args) {
+		
+		try {
+			System.out.println("Open files");
+			int n=args.length;
+			System.out.println("n= "+n);
+			int a=45/5;
+			System.out.println("a= "+a);
+			System.out.println("Hey this is running");
+		}
+		catch(ArithmeticException ae) {
+			System.out.println(ae);
+			System.out.println("please pass data while running this program");
+		}
+		finally {
+			System.out.println("close files");
+		}
+
+	}
+
+}
+
+o/p:
+Open files
+n= 0
+a= 9
+Hey this is running
+close files
+
+// Finally block is executed always
+
+
+CODE3:
+
+public class demo_exception {
+
+	public static void main(String[] args) {
+
+		try {
+			System.out.println("open files");
+			int n=args.length;
+			System.out.println(n);
+			int b[]= {10,20,30};   // array
+			b[50]=100;        // inserting 100 at 50th position in b
+		}catch(ArithmeticException ae) {
+			System.out.println(ae);
+			System.out.println("please enter data while running");
+		}
+		catch(ArrayIndexOutOfBoundsException aie) {
+			// TODO : handle exception
+			aie.printStackTrace();
+			System.out.println("PLease see that the array index is within the range");
+		}
+		finally {
+			System.out.println("close files");
+		}
+
+	}
+
+}
+
+O/P:
+open files
+0
+java.lang.ArrayIndexOutOfBoundsException: Index 50 out of bounds for length 3
+	at javaintro/javaintro.demo_exception.main(demo_exception.java:14)
+PLease see that the array index is within the range
+close files
+
+CODE4:
+
+public class demo_exception {
+
+	public static void main(String[] args) {
+		
+		try {
+			System.out.println("open files");
+			int n=2;
+			System.out.println(n);
+			int a=45/n;
+			System.out.println("a= "+a);
+			int b[]= {10,20,30};   // array
+			b[50]=100;        // inserting 100 at 50th position in b
+		}catch(ArithmeticException ae) {
+			System.out.println(ae);
+			System.out.println("please enter data while running");
+		}
+		catch(ArrayIndexOutOfBoundsException aie) {
+			// TODO : handle exception
+			aie.printStackTrace();
+			System.out.println("PLease see that the array index is within the range");
+		}
+		finally {
+			System.out.println("close files");
+		}
+	}
+}
+
+O/P:
+open files
+2
+a= 22
+java.lang.ArrayIndexOutOfBoundsException: Index 50 out of bounds for length 3
+	at javaintro/javaintro.demo_exception.main(demo_exception.java:14)
+PLease see that the array index is within the range
+close files
+
+
+CODE5:
+public class demo_exception {
+
+	public static void main(String[] args) {
+		try {
+			System.out.println("open files");
+			int n=args.length;
+			System.out.println(n);
+			int a=45/n;
+			System.out.println("a= "+a);
+			int b[]= {10,20,30};   // array
+			b[50]=100;        // inserting 100 at 50th position in b
+		}catch(ArithmeticException ae) {
+			System.out.println(ae);
+			System.out.println("please enter data while running");
+		}
+		catch(ArrayIndexOutOfBoundsException aie) {
+			// TODO : handle exception
+			aie.printStackTrace();
+			System.out.println("PLease see that the array index is within the range");
+		}
+		finally {
+			System.out.println("close files");
+		}
+
+	}
+
+}
+
+O/P:   //// WHEN N=0 AND A=45/N THEN EXECUTON GOES TO CATCH BLOCK WHERE ARITHMETIC ERROR IS THERE
+open files
+0
+java.lang.ArithmeticException: / by zero
+please enter data while running
+close files
+
+
+
+
+
+
